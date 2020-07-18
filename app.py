@@ -11,11 +11,10 @@ global TOKEN
 TOKEN = bot_token
 
 # 機器人token
-bot = telegram.Bot(token=TOKEN)
+# bot = telegram.Bot(token=TOKEN)
 
 # Create a DLBot instance
-dlbot = DLBot(bot=bot, token=TOKEN, URL=URL, user_id=telegram_user_id)
-# dlbot.activate_bot()
+dlbot = DLBot(token=TOKEN, URL=URL, user_id=telegram_user_id)
 
 # 印出log的方法
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -53,6 +52,10 @@ def respond():
 
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
+    dlbot.activate_bot()
+
+
+'''
     # we use the bot object to link the bot to our app which live
     # in the link provided by URL
     s = bot.setWebhook('{URL}{HOOK}'.format(URL=URL, HOOK=TOKEN))
@@ -61,6 +64,7 @@ def set_webhook():
         return "webhook setup ok"
     else:
         return "webhook setup failed"
+'''
 
 @app.route('/')
 def index():
