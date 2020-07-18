@@ -14,6 +14,7 @@ TOKEN = bot_token
 bot = telegram.Bot(token=TOKEN)
 # Create a DLBot instance
 dlbot = DLBot(token=TOKEN, user_id=telegram_user_id)
+dlbot.activate_bot()
 
 # 印出log的方法
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -78,6 +79,7 @@ def echo(bot, update):
 dispatcher = Dispatcher(bot, None)
 echo_handler = MessageHandler(Filters.text, echo)  # 當你輸入 hi 機器人就會回你 hi
 dispatcher.add_handler(echo_handler)  # 也將剛剛自動回覆的功能加到你的 bot內
+
 
 
 if __name__ == '__main__':
