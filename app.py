@@ -77,7 +77,7 @@ def echo(bot, update):
 
 
 # for testing bot & webhook connection
-dispatcher = Dispatcher(bot, None)
+dispatcher = Dispatcher(bot, None, , use_context=True)
 echo_handler = MessageHandler(Filters.text, echo)  # 當你輸入 hi 機器人就會回你 hi
 dispatcher.add_handler(echo_handler)  # 也將剛剛自動回覆的功能加到你的 bot內
 
