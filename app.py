@@ -12,6 +12,9 @@ TOKEN = bot_token
 
 # 機器人token
 bot = telegram.Bot(token=TOKEN)
+# Create a DLBot instance
+dlbot = DLBot(token=TOKEN, user_id=telegram_user_id)
+dlbot.activate_bot()
 
 # 印出log的方法
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -24,7 +27,7 @@ logger.setLevel(logging.INFO)
 # Initial Flask app
 app = Flask(__name__)
 
-
+'''
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
     # we use the bot object to link the bot to our app which live
@@ -35,12 +38,7 @@ def set_webhook():
         return "webhook setup ok"
     else:
         return "webhook setup failed"
-
-
-# Create a DLBot instance
-dlbot = DLBot(token=TOKEN, user_id=telegram_user_id)
-dlbot.activate_bot()
-
+'''
 
 if __name__ == '__main__':
     app.run(threaded=True)

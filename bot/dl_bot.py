@@ -91,7 +91,7 @@ class DLBot(object):
         self.bot_active = True
 
         # Uncomment next line while debugging
-        updater.idle()
+        # Updater.idle()
 
     def stop_bot(self):
         """ Function to stop the bot """
