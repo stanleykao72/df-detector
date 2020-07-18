@@ -12,6 +12,7 @@ TOKEN = bot_token
 
 # 機器人token
 bot = telegram.Bot(token=TOKEN)
+
 # Create a DLBot instance
 # dlbot = DLBot(token=TOKEN, user_id=telegram_user_id)
 # dlbot.activate_bot()
