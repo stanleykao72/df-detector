@@ -5,6 +5,6 @@ bot_token = os.getenv("bot_token")
 # bot_user_name = 'imagedetect_bot'
 bot_user_name = os.getenv("bot_user_name")
 # telegram_user_id
-telegram_user_id = os.getenv("telegram_user_id")
+telegram_user_id = int(os.getenv("telegram_user_id"))
 # URL = "https://dfdetector.herokuapp.com/"
 URL = os.getenv("URL")
