@@ -13,7 +13,7 @@ TOKEN = bot_token
 # 機器人token
 # bot = telegram.Bot(token=TOKEN)
 # Create a DLBot instance
-bot = DLBot(token=telegram_token, user_id=telegram_user_id)
+bot = DLBot(token=TOKEN, user_id=telegram_user_id)
 
 # 印出log的方法
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

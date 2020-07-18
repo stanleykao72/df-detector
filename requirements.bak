@@ -25,5 +25,4 @@ typed-ast==1.4.1
 urllib3==1.25.9
 Werkzeug==1.0.1
 wrapt==1.11.2
-numpy
 gunicorn
