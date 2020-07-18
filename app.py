@@ -2,7 +2,7 @@ from flask import Flask, request
 import telegram
 from telegram.ext import Dispatcher, CommandHandler, MessageHandler, Filters
 from bot.credentials import bot_token, bot_user_name, telegram_user_id, URL
-from bot.dl_bot import DLBot
+# from bot.dl_bot import DLBot
 import logging
 
 
@@ -14,7 +14,7 @@ TOKEN = bot_token
 bot = telegram.Bot(token=TOKEN)
 
 # Create a DLBot instance
-# dlbot = DLBot(token=TOKEN, user_id=telegram_user_id)
+dlbot = DLBot(bot=bot, token=TOKEN, URL=URL, user_id=telegram_user_id)
 # dlbot.activate_bot()
 
 # 印出log的方法
@@ -62,12 +62,11 @@ def set_webhook():
     else:
         return "webhook setup failed"
 
-
 @app.route('/')
 def index():
     return 'root directory'
 
-
+'''
 def echo(bot, update):
     """
      簡稱自動回話，也就是你打什麼，他就回你什麼
@@ -80,6 +79,7 @@ def echo(bot, update):
 dispatcher = Dispatcher(bot, None, use_context=True)
 echo_handler = MessageHandler(Filters.text, echo)  # 當你輸入 hi 機器人就會回你 hi
 dispatcher.add_handler(echo_handler)  # 也將剛剛自動回覆的功能加到你的 bot內
+'''
 
 if __name__ == '__main__':
     app.run(threaded=True)
