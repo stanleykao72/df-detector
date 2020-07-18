@@ -1,7 +1,8 @@
 from flask import Flask, request
 import telegram
 from telegram.ext import Dispatcher, CommandHandler, MessageHandler, Filters
-from bot.credentials import bot_token, bot_user_name, URL
+from bot.credentials import bot_token, bot_user_name, telegram_user_id, URL
+from bot.dl_bot import DLBot
 import logging
 
 
@@ -10,7 +11,9 @@ global TOKEN
 TOKEN = bot_token
 
 # 機器人token
-bot = telegram.Bot(token=TOKEN)
+# bot = telegram.Bot(token=TOKEN)
+# Create a DLBot instance
+bot = DLBot(token=telegram_token, user_id=telegram_user_id)
 
 # 印出log的方法
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
