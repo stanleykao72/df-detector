@@ -11,9 +11,9 @@ global TOKEN
 TOKEN = bot_token
 
 # 機器人token
-# bot = telegram.Bot(token=TOKEN)
+bot = telegram.Bot(token=TOKEN)
 # Create a DLBot instance
-bot = DLBot(token=TOKEN, user_id=telegram_user_id)
+dlbot = DLBot(token=TOKEN, user_id=telegram_user_id)
 
 # 印出log的方法
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
