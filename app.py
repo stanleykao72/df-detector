@@ -18,7 +18,7 @@ WEBHOOK_PATH = '/webhook/'
 WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_PATH}'
 
 WEBAPP_HOST = '0.0.0.0'
-WEBAPP_PORT = os.environ.get('PORT')
+WEBAPP_PORT = int(os.environ.get('PORT', 33507))
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
