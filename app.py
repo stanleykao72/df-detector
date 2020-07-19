@@ -45,8 +45,8 @@ def respond():
         print("got text message :", text)
 
         response = "response OK"
-        # bot.sendMessage(chat_id=chat_id, text=response, reply_to_message_id=msg_id)
-        dlbot.send_message(response)
+        bot.sendMessage(chat_id=chat_id, text=response, reply_to_message_id=msg_id)
+        #dlbot.send_message(response)
     return 'ok'
 
 
