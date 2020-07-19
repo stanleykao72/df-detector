@@ -73,6 +73,7 @@ class DLBot(object):
     def set_webhook(self):
         """ Function to initiate the Telegram bot """
         self.updater = Updater(self.token, use_context=True)  # setup updater
+        print(self.updater)
         # Start the Bot
         # self.updater.start_polling()
         # self.bot_active = True
@@ -83,6 +84,7 @@ class DLBot(object):
     def activate_bot(self):
         """ Function to initiate the Telegram bot """
         # self.updater = Updater(self.token, use_context=True)  # setup updater
+        print(self.updater)
         dp = self.updater.dispatcher  # Get the dispatcher to register handlers
         dp.add_error_handler(self.error)  # log all errors
 
