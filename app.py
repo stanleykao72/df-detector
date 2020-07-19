@@ -24,7 +24,7 @@ logging.basicConfig(level=logging.INFO)
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
-#dp.middleware.setup(LoggingMiddleware())
+# dp.middleware.setup(LoggingMiddleware())
 
 
 @dp.message_handler(commands='start')
