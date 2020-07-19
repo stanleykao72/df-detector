@@ -3,4 +3,5 @@ numpy==1.18.5
 matplotlib
 python-telegram-bot==12.8
 requests==2.24.0
+telethon==1.15.0
 gunicorn
