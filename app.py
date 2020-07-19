@@ -1,41 +1,56 @@
 from bot.credentials import bot_token, bot_user_name, telegram_user_id, URL, api_id, api_hash
-from telethon import TelegramClient, events
+import os
+
+from aiogram import Bot, types, md
+from aiogram.dispatcher import Dispatcher
+from aiogram.utils.executor import start_webhook
+
 import logging
 
 
 global TOKEN
 TOKEN = bot_token
+# PROJECT_NAME = os.getenv('PROJECT_NAME', 'aiogram-example')  # Set it as you've set TOKEN env var
 
-# 機器人token
-# bot = telegram.Bot(token=TOKEN)
-bot = TelegramClient('bot', api_id, api_hash).start(bot_token=TOKEN)
+WEBHOOK_HOST = URL  # Enter here your link from Heroku project settings
+WEBHOOK_URL_PATH = '/webhook/'
+WEBHOOK_URL = f'{WEBHOOK_HOST}{WEBHOOK_URL_PATH}'
 
-# 印出log的方法
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger()
+WEBAPP_HOST = '0.0.0.0'
+WEBAPP_PORT = os.environ.get('PORT')
 
-# 有Debug 以及 Info 模式，因為我不需要印太多資訊只需要Info就好
-logger.setLevel(logging.DEBUG)
-# logger.setLevel(logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
-
-@bot.on(events.NewMessage(pattern='/start'))
-async def start(event):
-    """Send a message when the command /start is issued."""
-    await event.respond('Hi!')
-    raise events.StopPropagation
+bot = Bot(token=TOKEN)
+dp = Dispatcher(bot)
 
 
-@bot.on(events.NewMessage)
-async def echo(event):
-    """Echo the user message."""
-    await event.respond(event.text)
+@dp.message_handler(commands='start')
+async def welcome(message: types.Message):
+    await bot.send_message(
+        message.chat.id,
+        f'start up aiogram bot\n'
+        f'{md.hlink("github", "https://github.com/deploy-your-bot-everywhere/heroku")}',
+        parse_mode=types.ParseMode.HTML,
+        disable_web_page_preview=True)
 
 
-def main():
-    """Start the bot."""
-    bot.run_until_disconnected()
+@dp.message_handler()
+async def echo(message: types.Message):
+    await bot.send_message(message.chat.id, message.text)
+
+
+async def on_startup(dp):
+    await bot.set_webhook(WEBHOOK_URL)
+
+
+async def on_shutdown(dp):
+    # insert code here to run it before shutdown
+    await bot.delete_webhook()
+    pass
 
 
 if __name__ == '__main__':
-    main()
+    start_webhook(dispatcher=dp, webhook_path=WEBHOOK_URL_PATH,
+                  on_startup=on_startup, on_shutdown=on_shutdown,
+                  host=WEBAPP_HOST, port=WEBAPP_PORT)
