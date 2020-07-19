@@ -52,7 +52,7 @@ def respond():
 
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
-    dlbot.activate_bot()
+    dlbot.set_webhook()
 
 
 '''

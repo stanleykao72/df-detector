@@ -70,9 +70,23 @@ class DLBot(object):
                                " Send /plot to get a loss convergence plot.\n" \
                                " Send /stoptraining to stop training process.\n\n"
 
-    def activate_bot(self):
+    def set_webhook(self):
         """ Function to initiate the Telegram bot """
         self.updater = Updater(self.token, use_context=True)  # setup updater
+        # Start the Bot
+        # self.updater.start_polling()
+        # self.bot_active = True
+        s = self.updater.bot.setWebhook('{URL}{HOOK}'.format(URL=self.URL, HOOK=self.token))
+        # something to let us know things work
+        if s:
+            return "webhook setup ok"
+        else:
+            return "webhook setup failed"
+
+
+    def activate_bot(self):
+        """ Function to initiate the Telegram bot """
+        # self.updater = Updater(self.token, use_context=True)  # setup updater
         dp = self.updater.dispatcher  # Get the dispatcher to register handlers
         dp.add_error_handler(self.error)  # log all errors
 
@@ -87,18 +101,9 @@ class DLBot(object):
         dp.add_handler(self.lr_handler())  # set learning rate
         dp.add_handler(self.stop_handler())  # stop training
 
-        # Start the Bot
-        # self.updater.start_polling()
-        # self.bot_active = True
-        s = self.updater.bot.setWebhook('{URL}{HOOK}'.format(URL=self.URL, HOOK=self.token))
-        # something to let us know things work
-        if s:
-            return "webhook setup ok"
-        else:
-            return "webhook setup failed"
 
         # Uncomment next line while debugging
-        self.updater.idle()
+        # self.updater.idle()
 
     def stop_bot(self):
         """ Function to stop the bot """
