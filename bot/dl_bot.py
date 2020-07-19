@@ -51,7 +51,7 @@ class DLBot():
         # Command and conversation handles
         dp.add_handler(CommandHandler("start", self.start, filters=self.filters))  # /start
 
-    def start(self, bot, update):
+    def start(self, update, context):    # (self, bot, update):
         """ Telegram bot callback for the /start command.
         Fetches chat_id, activates automatic epoch updates and sends startup message"""
         update.message.reply_text(self.startup_message, reply_markup=ReplyKeyboardRemove())
