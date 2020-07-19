@@ -78,10 +78,7 @@ class DLBot(object):
         # self.bot_active = True
         s = self.updater.bot.setWebhook('{URL}{HOOK}'.format(URL=self.URL, HOOK=self.token))
         # something to let us know things work
-        if s:
-            return "webhook setup ok"
-        else:
-            return "webhook setup failed"
+        return s
 
     def activate_bot(self):
         """ Function to initiate the Telegram bot """

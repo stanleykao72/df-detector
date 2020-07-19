@@ -50,9 +50,14 @@ def respond():
     return 'ok'
 '''
 
+
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
-    dlbot.set_webhook()
+    s = dlbot.set_webhook()
+    if s:
+        return "webhook setup ok"
+    else:
+        return "webhook setup failed"
 
 
 '''
