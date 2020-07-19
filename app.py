@@ -71,7 +71,8 @@ def echo(update, context):
      簡稱自動回話，也就是你打什麼，他就回你什麼
     """
     text = update.message.text  # 取得對話的內容
-    update.message.reply_text(text)  # 回覆你輸入的內容
+    # update.message.reply_text(text)  # 回覆你輸入的內容
+    context.bot.send_message(chat_id=update.effective_chat.id, text)
 
 
 # Create a DLBot instance
