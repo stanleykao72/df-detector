@@ -83,7 +83,6 @@ class DLBot(object):
         else:
             return "webhook setup failed"
 
-
     def activate_bot(self):
         """ Function to initiate the Telegram bot """
         # self.updater = Updater(self.token, use_context=True)  # setup updater
