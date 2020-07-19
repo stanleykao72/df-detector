@@ -75,7 +75,9 @@ def echo(bot, update):
 
 # Create a DLBot instance
 dlbot = DLBot(bot=bot, token=TOKEN, URL=URL, user_id=telegram_user_id)
+print('1')
 dlbot.activate_bot()
+print('2')
 # for testing bot & webhook connection
 # dispatcher = Dispatcher(bot, None, use_context=True)
 # echo_handler = MessageHandler(Filters.text, echo)  # 當你輸入 hi 機器人就會回你 hi
