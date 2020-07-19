@@ -21,6 +21,7 @@ WEBAPP_HOST = '0.0.0.0'
 WEBAPP_PORT = os.environ.get('PORT')
 
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 logger.warning(f'PORT:{WEBAPP_PORT}')
 
 bot = Bot(token=TOKEN)
@@ -51,8 +52,8 @@ async def on_shutdown(dp):
     await bot.delete_webhook()
 
     # Close DB connection (if used)
-    await dp.storage.close()
-    await dp.storage.wait_closed()
+    # await dp.storage.close()
+    # await dp.storage.wait_closed()
 
     logging.warning('Bye!')
 
