@@ -21,6 +21,7 @@ WEBAPP_HOST = '0.0.0.0'
 WEBAPP_PORT = os.environ.get('PORT')
 
 logging.basicConfig(level=logging.INFO)
+logger.warning(f'PORT:{WEBAPP_PORT}')
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
