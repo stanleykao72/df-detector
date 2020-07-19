@@ -64,24 +64,24 @@ def set_webhook():
 def index():
     return 'root directory'
 
-'''
+
 def echo(bot, update):
     """
      簡稱自動回話，也就是你打什麼，他就回你什麼
     """
     text = update.message.text  # 取得對話的內容
     update.message.reply_text(text)  # 回覆你輸入的內容
-'''
+
 
 # Create a DLBot instance
-dlbot = DLBot(bot=bot, token=TOKEN, URL=URL, user_id=telegram_user_id)
-print('1')
-dlbot.activate_bot()
-print('2')
+#dlbot = DLBot(bot=bot, token=TOKEN, URL=URL, user_id=telegram_user_id)
+#print('1')
+#dlbot.activate_bot()
+#print('2')
 # for testing bot & webhook connection
-# dispatcher = Dispatcher(bot, None, use_context=True)
-# echo_handler = MessageHandler(Filters.text, echo)  # 當你輸入 hi 機器人就會回你 hi
-# dispatcher.add_handler(echo_handler)  # 也將剛剛自動回覆的功能加到你的 bot內
+dp = Dispatcher(bot, None, use_context=True)
+echo_handler = MessageHandler(Filters.text, echo)  # 當你輸入 hi 機器人就會回你 hi
+dp.add_handler(echo_handler)  # 也將剛剛自動回覆的功能加到你的 bot內
 
 if __name__ == '__main__':
     app.run(threaded=True)
