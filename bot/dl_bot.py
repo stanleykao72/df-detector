@@ -99,9 +99,8 @@ class DLBot(object):
         dp.add_handler(self.lr_handler())  # set learning rate
         dp.add_handler(self.stop_handler())  # stop training
 
-
         # Uncomment next line while debugging
-        # self.updater.idle()
+        self.updater.idle()
 
     def stop_bot(self):
         """ Function to stop the bot """
@@ -114,6 +113,7 @@ class DLBot(object):
         update.message.reply_text(self.startup_message, reply_markup=ReplyKeyboardRemove())
         self.chat_id = update.message.chat_id
         self.verbose = True
+        print(self.chat_id)
 
     def help(self, bot, update):
         """ Telegram bot callback for the /help command. Replies the startup message"""
