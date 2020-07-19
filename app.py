@@ -55,6 +55,7 @@ def respond():
 def set_webhook():
     s = dlbot.set_webhook()
     if s:
+        dlbot.activate_bot()
         return "webhook setup ok"
     else:
         return "webhook setup failed"
