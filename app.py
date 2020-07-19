@@ -25,7 +25,7 @@ logger.setLevel(logging.DEBUG)
 # Initial Flask app
 app = Flask(__name__)
 
-
+'''
 # @app.route('/hook', methods=['POST'])
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
@@ -46,7 +46,7 @@ def respond():
         bot.sendMessage(chat_id=chat_id, text=response, reply_to_message_id=msg_id)
         #dlbot.send_message(response)
     return 'ok'
-
+'''
 
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
@@ -81,9 +81,9 @@ def echo(update, context):
 #print('2')
 # for testing bot & webhook connection
 dp = Dispatcher(bot, None, use_context=True)
-logger.warning(f'dp:{dp}')
+logger.info(f'dp:{dp}')
 echo_handler = MessageHandler(Filters.text, echo)  # 當你輸入 hi 機器人就會回你 hi
-logger.warning(f'echo_handler:{echo_handler}')
+logger.info(f'echo_handler:{echo_handler}')
 dp.add_handler(echo_handler)  # 也將剛剛自動回覆的功能加到你的 bot內
 
 if __name__ == '__main__':
