@@ -65,7 +65,8 @@ def index():
     return 'root directory'
 
 
-def echo(bot, update):
+#def echo(bot, update):
+def echo(update, context):
     """
      簡稱自動回話，也就是你打什麼，他就回你什麼
     """
