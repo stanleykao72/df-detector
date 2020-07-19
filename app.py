@@ -27,7 +27,7 @@ logger.setLevel(logging.INFO)
 # Initial Flask app
 app = Flask(__name__)
 
-
+'''
 # @app.route('/hook', methods=['POST'])
 @app.route('/{}'.format(TOKEN), methods=['POST'])
 def respond():
@@ -48,7 +48,7 @@ def respond():
         # bot.sendMessage(chat_id=chat_id, text=response, reply_to_message_id=msg_id)
         dlbot.send_message(response)
     return 'ok'
-
+'''
 
 @app.route('/setwebhook', methods=['GET', 'POST'])
 def set_webhook():
