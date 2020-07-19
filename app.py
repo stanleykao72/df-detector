@@ -19,8 +19,8 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(leve
 logger = logging.getLogger()
 
 # 有Debug 以及 Info 模式，因為我不需要印太多資訊只需要Info就好
-# logger.setLevel(logging.DEBUG)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
+# logger.setLevel(logging.INFO)
 
 # Initial Flask app
 app = Flask(__name__)
