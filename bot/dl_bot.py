@@ -18,7 +18,7 @@ class DLBot():
         self.filters = None
         self.chat_id = None  # chat id, will be fetched during /start command
         # Enable logging
-        logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+        logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
         self.logger = logging.getLogger(__name__)
         # Message to display on /start and /help commands
         self.startup_message = "Hi, I'm the DL bot! I will send you updates on your training process.\n" \
