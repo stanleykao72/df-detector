@@ -49,6 +49,8 @@ class DLBot():
 
         self.filters = Filters.user(user_id=self.user_id) if self.user_id else None
         # Command and conversation handles
+        #CommandHandler("start")
+        #MessageHandler()
         dp.add_handler(CommandHandler("start", self.start, filters=self.filters))  # /start
 
     def start(self, update, context):    # (self, bot, update):
