@@ -54,6 +54,8 @@ class DLBot():
     def start(self, update, context):    # (self, bot, update):
         """ Telegram bot callback for the /start command.
         Fetches chat_id, activates automatic epoch updates and sends startup message"""
+        print(f'update:{update}')
+        print(f'context:{context}')
         update.message.reply_text(self.startup_message, reply_markup=ReplyKeyboardRemove())
         self.chat_id = update.message.chat_id
         self.verbose = True
