@@ -1,3 +1,4 @@
+from flask import Flask, request
 import telegram
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import Dispatcher, CommandHandler, MessageHandler, Filters
@@ -41,10 +42,10 @@ class DLBot():
         dp = Dispatcher(self.bot, None, use_context=True)
         dp.add_error_handler(self.error)  # log all errors
 
-        update = telegram.Update.de_json(request.get_json(force=True), bot)
-        dispatcher.process_update(update)
-        self.chat_id = update.message.chat.id
-        self.msg_id = update.message.message_id
+        # update = telegram.Update.de_json(request.get_json(force=True), bot)
+        # dp.process_update(update)
+        # self.chat_id = update.message.chat.id
+        # self.msg_id = update.message.message_id
 
         self.filters = Filters.user(user_id=self.user_id) if self.user_id else None
         # Command and conversation handles
@@ -56,3 +57,7 @@ class DLBot():
         update.message.reply_text(self.startup_message, reply_markup=ReplyKeyboardRemove())
         self.chat_id = update.message.chat_id
         self.verbose = True
+
+    def error(self, update, error):
+        """Log Errors caused by Updates."""
+        self.logger.warning('Update "%s" caused error "%s"', update, error)
